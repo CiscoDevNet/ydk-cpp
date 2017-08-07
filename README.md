@@ -92,7 +92,7 @@ $ sudo apt-get install libcurl4-openssl-dev libpcre3-dev libssh-dev libxml2-dev 
 Centos (Fedora-based) - The following packages must be present in your system before installing YDK-Cpp:
 ```
 $ sudo yum install epel-release
-$ sudo yum install libxml2-devel libxslt-devel libssh-devel libtool gcc-c++ pcre-devel cmake3 clang
+$ sudo yum install libxml2-devel libxslt-devel libssh-devel libtool gcc-c++ pcre-devel cmake3 clang libcurl-devel
 $ sudo ln –fs $(which cmake3) /usr/bin/cmake && export PATH=/usr/bin:$PATH
 ```
 
