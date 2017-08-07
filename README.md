@@ -86,14 +86,14 @@ Similarly, to install the prebuilt binaries for ydk `ietf` bundle, execute:
 **Linux**  
 Ubuntu (Debian-based) - The following packages must be present in your system before installing YDK-Cpp:
 ```
-$ sudo apt-get install gdebi-core python3-dev python-dev libtool-bin
+$ sudo apt-get install libcurl4-openssl-dev libpcre3-dev libssh-dev libxml2-dev libxslt1-dev libtool-bin cmake
 ```
 
 Centos (Fedora-based) - The following packages must be present in your system before installing YDK-Cpp:
 ```
 $ sudo yum install epel-release
-$ sudo yum install libssh-devel gcc-c++
-$ sudo ln –fs /usr/bin/cmake3 /usr/bin/cmake && export PATH=/usr/bin:$PATH
+$ sudo yum install libxml2-devel libxslt-devel libssh-devel libtool gcc-c++ pcre-devel cmake3 clang
+$ sudo ln –fs $(which cmake3) /usr/bin/cmake && export PATH=/usr/bin:$PATH
 ```
 
 **Mac**  
