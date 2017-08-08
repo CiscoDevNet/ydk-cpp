@@ -32,7 +32,7 @@ You can install YDK-Cpp on macOS or Linux.  It is not currently supported on Win
 #### Linux
 ##### Ubuntu (Debian-based):
 ```
-   $ sudo apt-get install gdebi-core python3-dev python-dev libtool-bin
+   $ sudo apt-get install gdebi-core libtool-bin
 ```
 The prebuilt binaries for ydk core and the `ietf`, `openconfig`, `cisco-ios-xr` and `cisco-ios-xe` bundles are available at the [Artifactory Repository Browser](https://devhub.cisco.com/artifactory/webapp/#/artifacts/browse/tree/General/debian-ydk/0.6.0).
 To install the prebuilt binaries for ydk `core`, execute:
