@@ -28,8 +28,8 @@ The YANG Development Kit (YDK) is a Software Development Kit that provides API's
 You can install YDK-Cpp on macOS or Linux.  It is not currently supported on Windows.
 
 ### System Requirements
-**Linux**  
-Ubuntu (Debian-based) - The following packages must be present in your system before installing YDK-Cpp:
+#### Linux
+**Ubuntu (Debian-based)** - The following packages must be present in your system before installing YDK-Cpp:
 
 If installing from prebuilt binary:
 ```
@@ -40,7 +40,7 @@ If building from source:
 $ sudo apt-get install libcurl4-openssl-dev libpcre3-dev libssh-dev libxml2-dev libxslt1-dev libtool-bin cmake
 ```
 
-Centos (Fedora-based) - The following packages must be present in your system before installing YDK-Cpp:
+**Centos (Fedora-based)** - The following packages must be present in your system before installing YDK-Cpp:
 
 If installing from prebuilt binary:
 ```
@@ -100,7 +100,7 @@ $ sudo installer -pkg libydk-ietf-0.1.3-Darwin.pkg -target /
 ```
 Similarly other model bundle packages listed [here](http://devhub.cisco.com/artifactory/webapp/#/artifacts/browse/tree/General/osx-ydk/0.6.1) can be installed.
 
-####Installing from source
+#### Installing from source
 #### Building YDK
 YDK uses ``cmake`` as the build system of choice. To install the ``core`` package, execute:
 ```
